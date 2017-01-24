@@ -1,0 +1,10 @@
+[webservers]
+10.##.##.###
+web1
+web2
+
+[dbservers]
+db1
+
+[lbservers]
+lb1
