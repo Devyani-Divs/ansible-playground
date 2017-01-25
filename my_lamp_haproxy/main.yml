@@ -1,0 +1,7 @@
+# main.yml
+---
+- hosts: web
+  roles:
+    - common
+    - webservers
+
