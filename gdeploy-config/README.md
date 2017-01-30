@@ -9,3 +9,5 @@ nfs-ganesha
 The config files ganesha.conf and nfs-ganesha.conf can be used to install
 and test the nfs-ganesha package using gdeploy.
 
+# glusterfs-ganesha
+# needs to belong to the same release, else dependency issues come up.
