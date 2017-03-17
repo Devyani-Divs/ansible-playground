@@ -1,0 +1,17 @@
+BASE_IMAGE = "centos/7"
+COCKPIT_OVIRT_REPO = "~/devenv/ovirt/cockpit-ovirt"
+Vagrant.configure(2) do |config|
+  config.vm.define "cockpit-ovirt-build" do |node|
+    node.vm.box = BASE_IMAGE
+    node.vm.hostname = "cockpit-ovirt-build"
+    node.vm.network "private_network", ip: "192.168.10.51"
+    config.vm.synced_folder COCKPIT_OVIRT_REPO, "/cockpit-ovirt/", type: "nfs"
+    node.vm.provider "virtualbox" do | v |
+      v.customize ['modifyvm', :id, '--memory', '1024']
+    end
+    config.vm.provision "shell", inline: <<-SHELL
+      set -eu
+      echo redhat | passwd --stdin root
+    SHELL
+  end
+end
